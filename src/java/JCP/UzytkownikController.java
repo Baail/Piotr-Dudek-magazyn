@@ -79,6 +79,17 @@ public Uzytkownik przekaz()
 {
     return selected;
 }
+public List<Uzytkownik> dupa(Uzytkownik a) {
+    
+            items = getFacade().pokaz(a);
+        
+        return items;
+}
+public String wyloguj()
+{
+    selected = null;
+    return "logowanie.xhtml";
+}
     public void update() {
         persist(PersistAction.UPDATE, ResourceBundle.getBundle("/Bundle").getString("UzytkownikUpdated"));
     }

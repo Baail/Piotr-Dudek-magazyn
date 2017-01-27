@@ -10,16 +10,14 @@
     <h:body>
         <h:form>
             <p:messages id="messages"  autoUpdate="true" closable="true"  />
+        <p:commandButton value="Produkty" action="faces/produkt/List.xhtml" />
+            <p:commandButton value="Wyloguj" action="#{uzytkownikController.wyloguj()}" style="margin-left: 90%"/>
+      
+        
+        <br />
+        <p:commandButton value="Edycja konta" action="faces/uzytkownik/List.xhtml" />
+        <br />
         </h:form>
-        Hello from Facelets
-        <br />
-        <h:link outcome="welcomePrimefaces" value="Primefaces welcome page" />
-        <br />
-        <h:link outcome="/kategoria/List" value="Show All Kategoria Items"/>
-        <br />
-        <h:link outcome="/produkt/List" value="Show All Produkt Items"/>
-        <br />
-        <h:link outcome="/uzytkownik/List" value="Show All Uzytkownik Items"/>
     </h:body>
 
 

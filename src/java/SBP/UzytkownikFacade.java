@@ -6,6 +6,7 @@
 package SBP;
 
 import entity.Uzytkownik;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
@@ -44,5 +45,12 @@ public class UzytkownikFacade extends AbstractFacade<Uzytkownik> {
     public UzytkownikFacade() {
         super(Uzytkownik.class);
     }
-    
+    public List<Uzytkownik> pokaz(Uzytkownik a)
+    {
+      int z = a.getIDUzyt();
+        TypedQuery<Uzytkownik> query=
+                em.createQuery("SELECT a FROM Uzytkownik a WHERE a.iDUzyt =:z",Uzytkownik.class).setParameter("z", z);
+        List<Uzytkownik> wynik = query.getResultList();
+        return wynik; 
+    } 
 }
