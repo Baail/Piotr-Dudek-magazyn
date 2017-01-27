@@ -1,0 +1,136 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+        <h:outputStylesheet name="css/jsfcrud.css"/>
+    </h:head>
+    <h:body>
+      <h:form>
+            #{uzytkownikController.prepareCreate2()}     
+    <p:growl id="growl" sticky="true" showDetail="true"/>
+ 
+    <p:wizard flowListener="#{uzytkownikController.onFlowProcess}">
+        <p:tab id="personal" title="Personal">
+            <p:panel header="Personal Details">
+                <p:messages />
+                <h:panelGrid columns="2" columnClasses="label, value">
+                    <h:outputText value="Login: *" style="font-weight: bold"/>
+                    <p:inputText id="logowanie" value="#{uzytkownikController.selected.login}" required="true" requiredMessage=""/>
+ 
+                    <h:outputText  value="Hasło: *" style="font-weight: bold" />
+                    <p:password id="haslo1" value="#{uzytkownikController.selected.haslo}" required="true" requiredMessage=""/>
+                    
+                    <h:outputText value="Powtórz hasło: *" style="font-weight: bold" />
+                  <p:password id="haslo2" value="#{String}" required="true" requiredMessage=""/>
+                    
+                     <h:outputText  value="Imie: *" style="font-weight: bold" />
+                    <p:inputText id="Imie" value="#{uzytkownikController.selected.imie}" required="true" requiredMessage=""/>
+                    
+                     <h:outputText  value="Nazwisko: *" style="font-weight: bold" />
+                     <p:inputText id="Nazwisko" value="#{uzytkownikController.selected.nazwisko}" required="true" requiredMessage=""/>
+                     
+                     <h:outputText  value="Kategoria: *" style="font-weight: bold" />                     
+                     <p:selectOneMenu id="IDKat" value="#{uzytkownikController.selected.IDKat}" required="true" requiredMessage="#{bundle.EditUzytkownikRequiredMessage_IDKat}">
+                            <f:selectItems value="#{kategoriaController.itemsAvailableSelectOne}"
+                                           var="IDKatItem"
+                                           itemValue="#{IDKatItem}"/>
+                        </p:selectOneMenu>
+ 
+                    
+ 
+                   
+                </h:panelGrid>
+            </p:panel>
+        </p:tab>
+ 
+       <!-- <p:tab id="address" title="Address">
+            <p:panel header="Address Details">
+                <p:messages />
+                <h:panelGrid columns="2" columnClasses="label, value">
+                    <h:outputText value="Street: " />
+                    <p:inputText value="#{userWizard.user.street}" />
+ 
+                    <h:outputText value="Postal Code: " />
+                    <p:inputText value="#{userWizard.user.postalCode}" />
+ 
+                    <h:outputText value="City: " />
+                    <p:inputText value="#{userWizard.user.city}" />
+ 
+                    <h:outputText value="Skip to last: " />
+                    <h:selectBooleanCheckbox value="#{userWizard.skip}" />
+                </h:panelGrid>
+            </p:panel>
+        </p:tab>
+ 
+        <p:tab id="contact" title="Contact">
+            <p:panel header="Contact Information">
+                <p:messages />
+                <h:panelGrid columns="2" columnClasses="label, value">
+                    <h:outputText value="Email: *" />
+                    <p:inputText value="#{userWizard.user.email}" required="true" label="Email"/>
+ 
+                    <h:outputText value="Phone: " />
+                    <p:inputText value="#{userWizard.user.phone}"/>
+ 
+                    <h:outputText value="Additional Info: " />
+                    <p:inputText value="#{userWizard.user.info}"/>
+                </h:panelGrid>
+            </p:panel>
+        </p:tab>-->
+ 
+        <p:tab id="confirm" title="Confirmation">
+            <p:panel header="Confirmation">
+                <h:panelGrid id="confirmation" columns="3" columnClasses="grid,grid,grid">
+                    <h:panelGrid columns="2" columnClasses="label, value">
+                        <h:outputText value="Firstname: " />
+                        <h:outputText value="#{uzytkownikController.selected.login}" styleClass="outputLabel"/>
+ 
+                        <h:outputText value="Lastname: " />
+                        <h:outputText value="#{uzytkownikController.selected.haslo}" styleClass="outputLabel"/>
+ 
+                       <!-- <h:outputText value="Age: " />
+                        <h:outputText value="#{userWizard.user.age}" styleClass="outputLabel"/>-->
+                    </h:panelGrid>
+ 
+                    <!--<h:panelGrid columns="2" columnClasses="label, value">
+                        <h:outputText value="Street: " />
+                        <h:outputText value="#{userWizard.user.street}" styleClass="outputLabel"/>
+ 
+                        <h:outputText value="Postal: " />
+                        <h:outputText value="#{userWizard.user.postalCode}" styleClass="outputLabel"/>
+ 
+                        <h:outputText value="City: " />
+                        <h:outputText value="#{userWizard.user.city}" styleClass="outputLabel"/>
+                    </h:panelGrid>
+ 
+                    <h:panelGrid columns="2" columnClasses="label, value">
+                        <h:outputText value="Email: " />
+                        <h:outputText value="#{userWizard.user.email}" styleClass="outputLabel"/>
+ 
+                        <h:outputText value="Phone " />
+                        <h:outputText value="#{userWizard.user.phone}" styleClass="outputLabel"/>
+ 
+                        <h:outputText value="Info: " />
+                        <h:outputText value="#{userWizard.user.info}" styleClass="outputLabel"/>
+ 
+                        <h:outputText />
+                        <h:outputText />
+                    </h:panelGrid>-->
+                </h:panelGrid>
+ 
+                <p:commandButton value="Submit" action="#{uzytkownikController.create2()}" update="growl" process="@this"/>
+            </p:panel>
+        </p:tab>
+    </p:wizard>
+ 
+</h:form>
+    </h:body>
+
+
+
+</html>

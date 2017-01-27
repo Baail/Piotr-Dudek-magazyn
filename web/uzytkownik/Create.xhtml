@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="UzytkownikCreateDlg" widgetVar="UzytkownikCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateUzytkownikTitle}">
+            <h:form id="UzytkownikCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{uzytkownikController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateUzytkownikLabel_IDUzyt}" for="IDUzyt" />
+                        <p:inputText id="IDUzyt" value="#{uzytkownikController.selected.IDUzyt}" title="#{bundle.CreateUzytkownikTitle_IDUzyt}" required="true" requiredMessage="#{bundle.CreateUzytkownikRequiredMessage_IDUzyt}"/>
+                        <p:outputLabel value="#{bundle.CreateUzytkownikLabel_login}" for="login" />
+                        <p:inputText id="login" value="#{uzytkownikController.selected.login}" title="#{bundle.CreateUzytkownikTitle_login}" required="true" requiredMessage="#{bundle.CreateUzytkownikRequiredMessage_login}"/>
+                        <p:outputLabel value="#{bundle.CreateUzytkownikLabel_haslo}" for="haslo" />
+                        <p:inputText id="haslo" value="#{uzytkownikController.selected.haslo}" title="#{bundle.CreateUzytkownikTitle_haslo}" required="true" requiredMessage="#{bundle.CreateUzytkownikRequiredMessage_haslo}"/>
+                        <p:outputLabel value="#{bundle.CreateUzytkownikLabel_imie}" for="imie" />
+                        <p:inputText id="imie" value="#{uzytkownikController.selected.imie}" title="#{bundle.CreateUzytkownikTitle_imie}" required="true" requiredMessage="#{bundle.CreateUzytkownikRequiredMessage_imie}"/>
+                        <p:outputLabel value="#{bundle.CreateUzytkownikLabel_nazwisko}" for="nazwisko" />
+                        <p:inputText id="nazwisko" value="#{uzytkownikController.selected.nazwisko}" title="#{bundle.CreateUzytkownikTitle_nazwisko}" required="true" requiredMessage="#{bundle.CreateUzytkownikRequiredMessage_nazwisko}"/>
+                        <p:outputLabel value="#{bundle.CreateUzytkownikLabel_IDKat}" for="IDKat" />
+                        <p:selectOneMenu id="IDKat" value="#{uzytkownikController.selected.IDKat}" required="true" requiredMessage="#{bundle.EditUzytkownikRequiredMessage_IDKat}">
+                            <f:selectItems value="#{kategoriaController.itemsAvailableSelectOne}"
+                                           var="IDKatItem"
+                                           itemValue="#{IDKatItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{uzytkownikController.create}" value="#{bundle.Save}" update="display,:UzytkownikListForm:datalist,:growl" oncomplete="handleSubmit(args,'UzytkownikCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="UzytkownikCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

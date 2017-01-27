@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+        <h:outputStylesheet name="css/jsfcrud.css"/>
+    </h:head>
+    <h:body>
+        <h:form>
+            <p:messages id="messages"  autoUpdate="true" closable="true"  />
+        </h:form>
+        Hello from Facelets
+        <br />
+        <h:link outcome="welcomePrimefaces" value="Primefaces welcome page" />
+        <br />
+        <h:link outcome="/kategoria/List" value="Show All Kategoria Items"/>
+        <br />
+        <h:link outcome="/produkt/List" value="Show All Produkt Items"/>
+        <br />
+        <h:link outcome="/uzytkownik/List" value="Show All Uzytkownik Items"/>
+    </h:body>
+
+
+
+</html>
+

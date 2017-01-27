@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ProduktCreateDlg" widgetVar="ProduktCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateProduktTitle}">
+            <h:form id="ProduktCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{produktController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateProduktLabel_IDProd}" for="IDProd" />
+                        <p:inputText id="IDProd" value="#{produktController.selected.IDProd}" title="#{bundle.CreateProduktTitle_IDProd}" required="true" requiredMessage="#{bundle.CreateProduktRequiredMessage_IDProd}"/>
+                        <p:outputLabel value="#{bundle.CreateProduktLabel_nazwa}" for="nazwa" />
+                        <p:inputText id="nazwa" value="#{produktController.selected.nazwa}" title="#{bundle.CreateProduktTitle_nazwa}" />
+                        <p:outputLabel value="#{bundle.CreateProduktLabel_cena}" for="cena" />
+                        <p:inputText id="cena" value="#{produktController.selected.cena}" title="#{bundle.CreateProduktTitle_cena}" />
+                        <p:outputLabel value="#{bundle.CreateProduktLabel_ilosc}" for="ilosc" />
+                        <p:inputText id="ilosc" value="#{produktController.selected.ilosc}" title="#{bundle.CreateProduktTitle_ilosc}" />
+                        <p:outputLabel value="#{bundle.CreateProduktLabel_IDKat}" for="IDKat" />
+                        <p:selectOneMenu id="IDKat" value="#{produktController.selected.IDKat}" required="true" requiredMessage="#{bundle.EditProduktRequiredMessage_IDKat}">
+                            <f:selectItems value="#{kategoriaController.itemsAvailableSelectOne}"
+                                           var="IDKatItem"
+                                           itemValue="#{IDKatItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{produktController.create}" value="#{bundle.Save}" update="display,:ProduktListForm:datalist,:growl" oncomplete="handleSubmit(args,'ProduktCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ProduktCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
