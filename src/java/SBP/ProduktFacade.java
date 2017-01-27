@@ -6,9 +6,12 @@
 package SBP;
 
 import entity.Produkt;
+import entity.Uzytkownik;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -29,4 +32,13 @@ public class ProduktFacade extends AbstractFacade<Produkt> {
         super(Produkt.class);
     }
     
+
+ public List<Produkt> pokaz(Uzytkownik a)
+    {
+      int z = a.getIDKat().getIDKat();
+        TypedQuery<Produkt> query=
+                em.createQuery("SELECT a FROM Produkt a WHERE a.iDKat.iDKat =:z",Produkt.class).setParameter("z", z);
+        List<Produkt> wynik = query.getResultList();
+        return wynik; 
+    }
 }

@@ -152,7 +152,7 @@ public class Uzytkownik implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.Uzytkownik[ iDUzyt=" + iDUzyt + " ]";
+        return imie+nazwisko;
     }
     
 }

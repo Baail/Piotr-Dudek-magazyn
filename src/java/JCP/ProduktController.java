@@ -4,6 +4,7 @@ import entity.Produkt;
 import JCP.util.JsfUtil;
 import JCP.util.JsfUtil.PersistAction;
 import SBP.ProduktFacade;
+import entity.Uzytkownik;
 
 import java.io.Serializable;
 import java.util.List;
@@ -27,7 +28,7 @@ public class ProduktController implements Serializable {
     private SBP.ProduktFacade ejbFacade;
     private List<Produkt> items = null;
     private Produkt selected;
-
+    Uzytkownik uzyt = new Uzytkownik();
     public ProduktController() {
     }
 
@@ -73,14 +74,23 @@ public class ProduktController implements Serializable {
             items = null;    // Invalidate list of items to trigger re-query.
         }
     }
-
+    public void przyjmij(Uzytkownik a)
+    {
+        
+        uzyt =a;
+    }
     public List<Produkt> getItems() {
         if (items == null) {
             items = getFacade().findAll();
         }
         return items;
     }
-
+public List<Produkt> dupa(Uzytkownik a) {
+    
+            items = getFacade().pokaz(a);
+        
+        return items;
+}
     private void persist(PersistAction persistAction, String successMessage) {
         if (selected != null) {
             setEmbeddableKeys();

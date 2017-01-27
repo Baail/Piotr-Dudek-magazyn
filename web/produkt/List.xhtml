@@ -16,7 +16,7 @@
         <ui:define name="body">
             <h:form id="ProduktListForm">
                 <p:panel header="#{bundle.ListProduktTitle}">
-                    <p:dataTable id="datalist" value="#{produktController.items}" var="item"
+                    <p:dataTable id="datalist" value="#{produktController.dupa(uzytkownikController.selected)}" var="item"
                                  selectionMode="single" selection="#{produktController.selected}"
                                  paginator="true"
                                  rowKey="#{item.IDProd}"

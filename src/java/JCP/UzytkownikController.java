@@ -14,6 +14,7 @@ import javax.ejb.EJB;
 import javax.ejb.EJBException;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
@@ -72,8 +73,12 @@ public String create2() {
         if (!JsfUtil.isValidationFailed()) {
             items = null;    // Invalidate list of items to trigger re-query.
         }
-        return "index.xhtml";
+        return "logowanie.xhtml";
     }
+public Uzytkownik przekaz()
+{
+    return selected;
+}
     public void update() {
         persist(PersistAction.UPDATE, ResourceBundle.getBundle("/Bundle").getString("UzytkownikUpdated"));
     }
@@ -128,7 +133,15 @@ public String create2() {
     public Uzytkownik getUzytkownik(java.lang.Integer id) {
         return getFacade().find(id);
     }
-
+    public String logowanie(String login,String haslo)
+    {
+        if (getFacade().logowanie(login, haslo)!= null){
+            selected = getFacade().logowanie(login, haslo);
+                    return "index.xhtml";}
+        else
+        {FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Zły login lub hasło. Spróbuj ponownie", "Błąd"));
+        return "logowanie.xhtml";}
+    }
     public List<Uzytkownik> getItemsAvailableSelectMany() {
         return getFacade().findAll();
     }

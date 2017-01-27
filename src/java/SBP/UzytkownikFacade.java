@@ -8,7 +8,9 @@ package SBP;
 import entity.Uzytkownik;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -24,7 +26,21 @@ public class UzytkownikFacade extends AbstractFacade<Uzytkownik> {
     protected EntityManager getEntityManager() {
         return em;
     }
+    public Uzytkownik logowanie(String login, String haslo)
+    {
+       Uzytkownik wynik= new Uzytkownik();
+        try {
+             TypedQuery<Uzytkownik> q2
+                = em.createQuery("SELECT c FROM Uzytkownik c WHERE c.login=:login AND c.haslo=:haslo", Uzytkownik.class).setParameter("login", login).setParameter("haslo", haslo);
+            if (q2.getSingleResult() != null) {
+                wynik = q2.getSingleResult();
+            }
+        } catch (NoResultException e) {
 
+            wynik = null;
+        }
+        return wynik; 
+    }
     public UzytkownikFacade() {
         super(Uzytkownik.class);
     }
