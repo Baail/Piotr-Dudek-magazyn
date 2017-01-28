@@ -12,8 +12,7 @@
             <h:form id="ProduktCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{produktController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateProduktLabel_IDProd}" for="IDProd" />
-                        <p:inputText id="IDProd" value="#{produktController.selected.IDProd}" title="#{bundle.CreateProduktTitle_IDProd}" required="true" requiredMessage="#{bundle.CreateProduktRequiredMessage_IDProd}"/>
+                        
                         <p:outputLabel value="#{bundle.CreateProduktLabel_nazwa}" for="nazwa" />
                         <p:inputText id="nazwa" value="#{produktController.selected.nazwa}" title="#{bundle.CreateProduktTitle_nazwa}" />
                         <p:outputLabel value="#{bundle.CreateProduktLabel_cena}" for="cena" />
@@ -21,11 +20,7 @@
                         <p:outputLabel value="#{bundle.CreateProduktLabel_ilosc}" for="ilosc" />
                         <p:inputText id="ilosc" value="#{produktController.selected.ilosc}" title="#{bundle.CreateProduktTitle_ilosc}" />
                         <p:outputLabel value="#{bundle.CreateProduktLabel_IDKat}" for="IDKat" />
-                        <p:selectOneMenu id="IDKat" value="#{produktController.selected.IDKat}" required="true" requiredMessage="#{bundle.EditProduktRequiredMessage_IDKat}">
-                            <f:selectItems value="#{kategoriaController.itemsAvailableSelectOne}"
-                                           var="IDKatItem"
-                                           itemValue="#{IDKatItem}"/>
-                        </p:selectOneMenu>
+                        <p:outputLabel value="#{produktController.selected.IDKat=uzytkownikController.selected.IDKat}" id="IDKat" />
                     </p:panelGrid>
                     <p:commandButton actionListener="#{produktController.create}" value="#{bundle.Save}" update="display,:ProduktListForm:datalist,:growl" oncomplete="handleSubmit(args,'ProduktCreateDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="ProduktCreateDialog.hide()"/>

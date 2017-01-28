@@ -12,8 +12,7 @@
             <h:form id="UzytkownikEditForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{uzytkownikController.selected != null}">
-                        <p:outputLabel value="#{bundle.EditUzytkownikLabel_IDUzyt}" for="IDUzyt" />
-                        <p:inputText id="IDUzyt" value="#{uzytkownikController.selected.IDUzyt}" title="#{bundle.EditUzytkownikTitle_IDUzyt}" required="true" requiredMessage="#{bundle.EditUzytkownikRequiredMessage_IDUzyt}"/>
+                        
                         <p:outputLabel value="#{bundle.EditUzytkownikLabel_login}" for="login" />
                         <p:inputText id="login" value="#{uzytkownikController.selected.login}" title="#{bundle.EditUzytkownikTitle_login}" required="true" requiredMessage="#{bundle.EditUzytkownikRequiredMessage_login}"/>
                         <p:outputLabel value="#{bundle.EditUzytkownikLabel_haslo}" for="haslo" />
@@ -22,13 +21,7 @@
                         <p:inputText id="imie" value="#{uzytkownikController.selected.imie}" title="#{bundle.EditUzytkownikTitle_imie}" required="true" requiredMessage="#{bundle.EditUzytkownikRequiredMessage_imie}"/>
                         <p:outputLabel value="#{bundle.EditUzytkownikLabel_nazwisko}" for="nazwisko" />
                         <p:inputText id="nazwisko" value="#{uzytkownikController.selected.nazwisko}" title="#{bundle.EditUzytkownikTitle_nazwisko}" required="true" requiredMessage="#{bundle.EditUzytkownikRequiredMessage_nazwisko}"/>
-                        <p:outputLabel value="#{bundle.EditUzytkownikLabel_IDKat}" for="IDKat" />
-                        <p:selectOneMenu id="IDKat" value="#{uzytkownikController.selected.IDKat}" required="true" requiredMessage="#{bundle.EditUzytkownikRequiredMessage_IDKat}">
-                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
-                            <f:selectItems value="#{kategoriaController.itemsAvailableSelectOne}"
-                                           var="IDKatItem"
-                                           itemValue="#{IDKatItem}"/>
-                        </p:selectOneMenu>
+                        
                     </p:panelGrid>
                     <p:commandButton actionListener="#{uzytkownikController.update}" value="#{bundle.Save}" update="display,:UzytkownikListForm:datalist,:growl" oncomplete="handleSubmit(args, 'UzytkownikEditDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="UzytkownikEditDialog.hide()"/>

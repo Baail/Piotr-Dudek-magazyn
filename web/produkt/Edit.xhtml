@@ -12,21 +12,14 @@
             <h:form id="ProduktEditForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{produktController.selected != null}">
-                        <p:outputLabel value="#{bundle.EditProduktLabel_IDProd}" for="IDProd" />
-                        <p:inputText id="IDProd" value="#{produktController.selected.IDProd}" title="#{bundle.EditProduktTitle_IDProd}" required="true" requiredMessage="#{bundle.EditProduktRequiredMessage_IDProd}"/>
-                        <p:outputLabel value="#{bundle.EditProduktLabel_nazwa}" for="nazwa" />
+                         <p:outputLabel value="#{bundle.EditProduktLabel_nazwa}" for="nazwa" />
                         <p:inputText id="nazwa" value="#{produktController.selected.nazwa}" title="#{bundle.EditProduktTitle_nazwa}" />
                         <p:outputLabel value="#{bundle.EditProduktLabel_cena}" for="cena" />
                         <p:inputText id="cena" value="#{produktController.selected.cena}" title="#{bundle.EditProduktTitle_cena}" />
                         <p:outputLabel value="#{bundle.EditProduktLabel_ilosc}" for="ilosc" />
                         <p:inputText id="ilosc" value="#{produktController.selected.ilosc}" title="#{bundle.EditProduktTitle_ilosc}" />
-                        <p:outputLabel value="#{bundle.EditProduktLabel_IDKat}" for="IDKat" />
-                        <p:selectOneMenu id="IDKat" value="#{produktController.selected.IDKat}" required="true" requiredMessage="#{bundle.EditProduktRequiredMessage_IDKat}">
-                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
-                            <f:selectItems value="#{kategoriaController.itemsAvailableSelectOne}"
-                                           var="IDKatItem"
-                                           itemValue="#{IDKatItem}"/>
-                        </p:selectOneMenu>
+                       
+                        
                     </p:panelGrid>
                     <p:commandButton actionListener="#{produktController.update}" value="#{bundle.Save}" update="display,:ProduktListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ProduktEditDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="ProduktEditDialog.hide()"/>

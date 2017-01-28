@@ -22,12 +22,8 @@
                         <p:inputText id="imie" value="#{uzytkownikController.selected.imie}" title="#{bundle.CreateUzytkownikTitle_imie}" required="true" requiredMessage="#{bundle.CreateUzytkownikRequiredMessage_imie}"/>
                         <p:outputLabel value="#{bundle.CreateUzytkownikLabel_nazwisko}" for="nazwisko" />
                         <p:inputText id="nazwisko" value="#{uzytkownikController.selected.nazwisko}" title="#{bundle.CreateUzytkownikTitle_nazwisko}" required="true" requiredMessage="#{bundle.CreateUzytkownikRequiredMessage_nazwisko}"/>
-                        <p:outputLabel value="#{bundle.CreateUzytkownikLabel_IDKat}" for="IDKat" />
-                        <p:selectOneMenu id="IDKat" value="#{uzytkownikController.selected.IDKat}" required="true" requiredMessage="#{bundle.EditUzytkownikRequiredMessage_IDKat}">
-                            <f:selectItems value="#{kategoriaController.itemsAvailableSelectOne}"
-                                           var="IDKatItem"
-                                           itemValue="#{IDKatItem}"/>
-                        </p:selectOneMenu>
+                        
+                        
                     </p:panelGrid>
                     <p:commandButton actionListener="#{uzytkownikController.create}" value="#{bundle.Save}" update="display,:UzytkownikListForm:datalist,:growl" oncomplete="handleSubmit(args,'UzytkownikCreateDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="UzytkownikCreateDialog.hide()"/>
