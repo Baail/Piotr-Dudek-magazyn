@@ -20,19 +20,19 @@
                 <p:messages />
                 <h:panelGrid columns="2" columnClasses="label, value">
                     <h:outputText value="Login: *" style="font-weight: bold"/>
-                    <p:inputText id="logowanie" value="#{uzytkownikController.selected.login}" required="true" requiredMessage=""/>
+                    <p:inputText id="logowanie" value="#{uzytkownikController.selected.login}" required="true" requiredMessage="Brak loginu"/>
  
                     <h:outputText  value="Hasło: *" style="font-weight: bold" />
-                    <p:password id="haslo1" value="#{uzytkownikController.selected.haslo}" required="true" requiredMessage=""/>
+                    <p:password id="haslo1" value="#{uzytkownikController.selected.haslo}" required="true" requiredMessage="Brak hasła"/>
                     
                     <h:outputText value="Powtórz hasło: *" style="font-weight: bold" />
-                  <p:password id="haslo2" value="#{String}" required="true" requiredMessage=""/>
+                  <p:password id="haslo2" value="#{String}" required="true" requiredMessage="Brak hasła"/>
                     
                      <h:outputText  value="Imie: *" style="font-weight: bold" />
-                    <p:inputText id="Imie" value="#{uzytkownikController.selected.imie}" required="true" requiredMessage=""/>
+                    <p:inputText id="Imie" value="#{uzytkownikController.selected.imie}" required="true" requiredMessage="Uzupełnij imie"/>
                     
                      <h:outputText  value="Nazwisko: *" style="font-weight: bold" />
-                     <p:inputText id="Nazwisko" value="#{uzytkownikController.selected.nazwisko}" required="true" requiredMessage=""/>
+                     <p:inputText id="Nazwisko" value="#{uzytkownikController.selected.nazwisko}" required="true" requiredMessage="Uzupełnij nazwisko"/>
                      
                      <h:outputText  value="Kategoria: *" style="font-weight: bold" />                     
                      <p:selectOneMenu id="IDKat" value="#{uzytkownikController.selected.IDKat}" required="true" requiredMessage="#{bundle.EditUzytkownikRequiredMessage_IDKat}">
